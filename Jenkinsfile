@@ -15,10 +15,16 @@ pipeline {
         stage ('build image') {
             steps {
                 sh 'docker build -t imagename .'
-                withCredentials([usernamePassword(credentialsId: '1be70791-bfcf-49e6-8bdf-e41c2c72ad66', passwordVariable: 'Priya123456', usernameVariable: 'priya668')]) {
-                    sh 'echo $Priya123456 | docker login -u $priya668 --password-stdin'
+            }
+        }
+        stage ('push image') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubid', variable: 'dockerpwd')]) {
+                        sh "docker login -u priya668 -p ${dockerpwd}"
+                        sh 'docker push imagename'
+                    }
                 }
-                sh 'docker push imagename'
             }
         }
     }
