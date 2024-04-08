@@ -10,14 +10,14 @@ pipeline {
 		}
 		stage ('test') {
 			steps {
-				sh 'mvn test'
+				sh 'mvn clean install'
 			}
-			post {
-				always {
-					junit 'target/surefire-reports/*.*xml'
-					archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-				}
-			}
+			//post {
+				//always {
+					//junit 'target/surefire-reports/*.*xml'
+					//archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+				}//
+			}//
 		}
 		stage ('build image') {
 			steps {
