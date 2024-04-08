@@ -15,7 +15,7 @@ pipeline {
         stage ('build image') {
             steps {
                 sh 'docker build -t your_image_name .'
-                withCredentials([usernamePassword(credentialsId: '1be70791-bfcf-49e6-8bdf-e41c2c72ad66', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: '1be70791-bfcf-49e6-8bdf-e41c2c72ad66', passwordVariable: 'Priya123456', usernameVariable: 'priya668')]) {
                     sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                 }
                 sh 'docker push your_image_name'
