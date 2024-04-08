@@ -2,13 +2,13 @@ pipeline {
 	agent any
 	
 	stages {
-		stage ('build') {
+		stage ('clone') {
 			steps {
-				sh 'mvn clean install -DskipTests'
+			 git branch: 'master', url: 'https://github.com/druti33/demo1.git'
 			}
 		
 		}
-		stage ('test') {
+		stage ('compile') {
 			steps {
 				sh 'mvn clean install'
 			}
