@@ -1,6 +1,7 @@
 pipeline {
     agent any
     
+    
     stages {
         stage ('clone') {
             steps {
@@ -14,14 +15,15 @@ pipeline {
         }
         stage ('build image') {
             steps {
-                sh 'docker build -t imagename .'
+                sh 'docker build -t imagename:1.0 .'
             }
         }
         stage ('push image') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'dockerhubid', variable: 'dockerpwd')]) {
+                    withCredentials([string(credentialsId: 'newdockerid', variable: 'dockerpwd')]) {
                         sh "docker login -u priya668 -p ${dockerpwd}"
+                        sh 'docker tag imagename:1.0 priya668/tomact:latest
                         sh 'docker push imagename'
                     }
                 }
