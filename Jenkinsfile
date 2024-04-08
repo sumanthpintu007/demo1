@@ -23,7 +23,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'newdockerid', variable: 'dockerpwd')]) {
                         sh "docker login -u priya668 -p ${dockerpwd}"
-                        sh 'docker tag imagename:1.0 priya668/tomact:latest
+                        sh 'docker tag imagename:1.0 priya668/tomacat:latest
                         sh 'docker push imagename'
                     }
                 }
