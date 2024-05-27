@@ -20,7 +20,7 @@ pipeline {
         stage ('push image') {
             steps {
                 script {
-                    sh 'docker login -u priya668 -p Priya123456'
+                    sh 'docker login -u priya668 -p Priyalaya@123'
                     sh 'docker tag imagename:1.0 priya668/tomcat'
                     sh 'docker push priya668/tomcat'
                 }
